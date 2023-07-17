@@ -7,7 +7,7 @@
 int main(int argc, char *argv[])
 {
 char *prompt = "$ ";
-char *line = NULL;
+char *line = NULL, **Tok;
 size_t len = 0;
 ssize_t read;
 	
@@ -20,10 +20,14 @@ ssize_t read;
 		read = getline(&line, &len, stdin);
 		if (read < 0)
 			break;
-		if (line[len - 1] == '\n')
-			line[linesize - 1] = '\0';
-
-		free(read);
+		if (line[_strlen(line) - 1] == '\n')
+			line[_strlen(line) - 1] = '\0';
+		Tok = token(line);
+		if (Tok == NULL || *Tok == NULL || **Tok == '\0')
+			continue;
+		if (ApplyExecute(Tok, line))
+			continue;
+		free(line);
 	}
-	
+	return(0);
 }

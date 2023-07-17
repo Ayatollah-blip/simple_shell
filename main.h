@@ -21,7 +21,6 @@ ssize_t _strlen(char *s);
 ssize_t _strncmp(char *s1, char *s2, int n);
 char *_strdup(char *s);
 char *_strchr(char *s, char c);
-
 void execution(char *cp, char **cmd);
 char *find_path(void);
 
@@ -37,8 +36,22 @@ void _printStr(char *str, ssize_t len);
 /* READLINE */
 char *Readline(void);
 /* exit */
-void EXIT(char **command, char *line)
+void EXIT(char **command, char *line);
+/* token */ 
+char **token(char *line);
+/* check if  print env or exit else apply execute */
+int ApplyExecute(char **cmd, char *buf);
+/* if env print env and if exit exit prog */
+int handlEnvOExit(char **command, char *line);
+/* print envioronment */
+void printEnv(void);
 
 /* -------------------------------------- */
+
+struct builtin
+{
+	char *env;
+	char *exit;
+} typedef builtin ;
 
 #endif /* SHELL_H */
