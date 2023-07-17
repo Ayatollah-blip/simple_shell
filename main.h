@@ -16,21 +16,29 @@
 extern char **environ;
 
 /* string handlers */
-int _strcmp(char *s1, char *s2);
-int _strlen(char *s);
-int _strncmp(char *s1, char *s2, int n);
+ssize_t _strcmp(char *s1, char *s2);
+ssize_t _strlen(char *s);
+ssize_t _strncmp(char *s1, char *s2, int n);
 char *_strdup(char *s);
 char *_strchr(char *s, char c);
 
 void execution(char *cp, char **cmd);
 char *find_path(void);
 
+/* Function of simple shell */
+/* --------------------------------------- */
+
 /* execute instruction */
 void execute(char *cp, char **cmd);
-
 /* free pointer */
-void free(char **buf);
+void Free(char **buf);
 /* print */
 void _printStr(char *str, ssize_t len);
+/* READLINE */
+char *Readline(void);
+/* exit */
+void EXIT(char **command, char *line)
+
+/* -------------------------------------- */
 
 #endif /* SHELL_H */

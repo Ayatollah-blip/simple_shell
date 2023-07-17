@@ -1,4 +1,4 @@
-#include "shell.h"
+#include "main.h"
 
 /**
 * _strcmp - compares two strings
@@ -7,9 +7,9 @@
 *
 * Return: returns difference between strings
 */
-int _strcmp(char *s1, char *s2)
+ssize_t _strcmp(char *s1, char *s2)
 {
-	int i = 0, output;
+	ssize_t i = 0, output;
 
 	while (*(s1 + i) == *(s2 + i) && *(s1 + i) != '\0')
 		i++;
@@ -25,9 +25,9 @@ int _strcmp(char *s1, char *s2)
 *
 * Return: returns length of string passed
 */
-int _strlen(char *s)
+ssize_t _strlen(char *s)
 {
-	int count = 0;
+	ssize_t count = 0;
 
 	while (*s != '\0')
 	{
@@ -45,9 +45,9 @@ int _strlen(char *s)
 *
 * Return: difference between s1 and s2
 */
-int _strncmp(char *s1, char *s2, int n)
+ssize_t _strncmp(char *s1, char *s2, int n)
 {
-	int i;
+	ssize_t i;
 
 	for (i = 0; s1[i] && s2[i] && i < n; i++)
 	{
@@ -66,7 +66,7 @@ int _strncmp(char *s1, char *s2, int n)
 char *_strdup(char *s)
 {
 	char *ptr;
-	int i, len;
+	ssize_t i, len;
 
 	if (s == NULL)
 		return (NULL);
