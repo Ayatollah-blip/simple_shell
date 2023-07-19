@@ -45,6 +45,13 @@ int ApplyExecute(char **cmd, char *buf);
 int handlEnvOExit(char **command, char *line);
 /* print envioronment */
 void printEnv(void);
+/* test if path exist and execute */
+char *testPath(char **path, char *command);
+/* place your path on the path from enviorenment */
+char *completePath(char *path, char *command);
+/* find path from eviorenement */
+char *Path(void);
+
 
 /* -------------------------------------- */
 
