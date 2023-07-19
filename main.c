@@ -15,7 +15,8 @@ int read;
 
 
 	if (argc < 0)
-		return (-1);	
+		return (-1);
+	signal(SIGINT, Handler);
 	while(1)
 	{
 		Free(Tok);
@@ -24,8 +25,8 @@ int read;
 
 		_printStr(prompt, _strlen(prompt));
 		read = getline(&line, &len, stdin);
-		if (read > 0)
-		{
+		if (read < 0)
+			break;
 		if (line[_strlen(line) - 1] == '\n')
 			line[_strlen(line) - 1] = '\0';
 		Tok = token(line);
@@ -40,18 +41,7 @@ int read;
 			perror(argv[0]);
 		else
 			execute(pathCommand, Tok);
-		}
-		else
-		{
-			free(path);
-			Free(Tok);
-			Free(paths);
-			free(pathCommand);
-			free(line);
-			break;
-		}
 	}
-	free(path);
 	Free(Tok);
 	Free(paths);
 	free(pathCommand);

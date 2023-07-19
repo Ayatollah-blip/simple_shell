@@ -51,7 +51,8 @@ char *testPath(char **path, char *command);
 char *completePath(char *path, char *command);
 /* find path from eviorenement */
 char *Path(void);
-
+/* signal handling of ctr + c */
+void Handler(int num);
 
 /* -------------------------------------- */
 
