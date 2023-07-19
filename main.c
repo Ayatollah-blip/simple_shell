@@ -28,6 +28,8 @@ ssize_t read;
 		if (ApplyExecute(Tok, line))
 			continue;
 		free(line);
+		Free(Tok);
 	}
+	
 	return(0);
 }
