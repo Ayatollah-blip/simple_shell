@@ -4,14 +4,14 @@
 * Free - frees buffers
 * @buf: buffer to be freed
 *
-* Return: no return
 */
 void Free(char **buf)
 {
 	int i = 0;
 
-	if (!buf || buf == NULL)
+	if (buf == NULL)
 		return;
+
 	while (buf[i])
 	{
 		free(buf[i]);

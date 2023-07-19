@@ -18,10 +18,14 @@ int read;
 		return (-1);	
 	while(1)
 	{
+		Free(Tok);
+		Free(paths);
+		free(pathCommand);
+
 		_printStr(prompt, _strlen(prompt));
 		read = getline(&line, &len, stdin);
-		if (read < 0)
-			break;
+		if (read > 0)
+		{
 		if (line[_strlen(line) - 1] == '\n')
 			line[_strlen(line) - 1] = '\0';
 		Tok = token(line);
@@ -36,11 +40,21 @@ int read;
 			perror(argv[0]);
 		else
 			execute(pathCommand, Tok);
-		
-		Free(Tok);
-		Free(paths);
-		free(pathCommand);
+		}
+		else
+		{
+			free(path);
+			Free(Tok);
+			Free(paths);
+			free(pathCommand);
+			free(line);
+			break;
+		}
 	}
+	free(path);
+	Free(Tok);
+	Free(paths);
+	free(pathCommand);
 	free(line);
 	return(0);
 }
