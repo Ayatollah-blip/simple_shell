@@ -7,21 +7,17 @@
 int main(int argc, char *argv[], char *envp[])
 {
 char *prompt = "$ ";
-char *line = NULL, *pathCommand = NULL, *path = NULL;
+char *line = NULL, *pathCommand = NULL, *path;
 char **Tok = NULL, **paths = NULL;
 size_t len = 0;
-ssize_t read;
-(void)envp, (void)argv;
-	
-	
+int read;
+(void)envp;
+
+
 	if (argc < 0)
 		return (-1);	
 	while(1)
 	{
-		
-		Free(Tok);
-		Free(paths);
-		free(pathCommand);
 		_printStr(prompt, _strlen(prompt));
 		read = getline(&line, &len, stdin);
 		if (read < 0)
@@ -40,6 +36,10 @@ ssize_t read;
 			perror(argv[0]);
 		else
 			execute(pathCommand, Tok);
+		
+		Free(Tok);
+		Free(paths);
+		free(pathCommand);
 	}
 	free(line);
 	return(0);

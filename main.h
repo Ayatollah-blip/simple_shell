@@ -55,10 +55,10 @@ char *Path(void);
 
 /* -------------------------------------- */
 
-struct builtin
+typedef struct builtin
 {
 	char *env;
 	char *exit;
-} typedef builtin ;
+}builtin ;
 
 #endif /* SHELL_H */
