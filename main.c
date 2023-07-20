@@ -1,23 +1,28 @@
 #include "main.h"
 
-/*
-
+/**
+* main - main function that calls the functions of simple shell
+* description : function main
+*
+* @argc : number of input argumetns
+* @argv : string of the arguments
+* @envp : environement of the directory
+*
+* Return: 0 if success
 */
 
 int main(int argc, char *argv[], char *envp[])
 {
-char *prompt = "$ ";
-char *line = NULL, *pathCommand = NULL, *path;
+char *line = NULL, *pathCommand = NULL, *path, *prompt = "$ ";
 char **Tok = NULL, **paths = NULL;
 size_t len = 0;
 int read;
 (void)envp;
 
-
 	if (argc < 0)
 		return (-1);
 	signal(SIGINT, Handler);
-	while(1)
+	while (1)
 	{
 		Free(Tok);
 		Free(paths);
@@ -46,5 +51,5 @@ int read;
 	Free(paths);
 	free(pathCommand);
 	free(line);
-	return(0);
+	return (0);
 }

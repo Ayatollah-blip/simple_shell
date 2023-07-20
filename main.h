@@ -37,7 +37,7 @@ void _printStr(char *str, ssize_t len);
 char *Readline(void);
 /* exit */
 void EXIT(char **command, char *line);
-/* token */ 
+/* token */
 char **token(char *line);
 /* check if  print env or exit else apply execute */
 int ApplyExecute(char **cmd, char *buf);
@@ -55,11 +55,15 @@ char *Path(void);
 void Handler(int num);
 
 /* -------------------------------------- */
-
+/**
+* struct builtin - builtin
+* @env : envirenment
+* @exit : exit func
+*/
 typedef struct builtin
 {
 	char *env;
 	char *exit;
-}builtin ;
+} builtin;
 
 #endif /* SHELL_H */

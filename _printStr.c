@@ -4,6 +4,7 @@
  * _printStr - print string
  *
  * @str : strings to be printed
+ * @len : length of the string
  *
  */
 

@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * execution - executes commands entered by users
+ * execute - executes commands entered by users
  *@cp: command
  *@cmd:vector array of pointers to commands
  * Return: 0
