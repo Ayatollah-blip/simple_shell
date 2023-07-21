@@ -13,7 +13,7 @@
 
 int main(int argc, char *argv[], char *envp[])
 {
-char *line = NULL, *pathCommand = NULL, *path, *prompt = "$ ";
+char *line = NULL, *pathCommand = NULL, *path;
 char **Tok = NULL, **paths = NULL;
 size_t len = 0;
 int read;
@@ -28,7 +28,7 @@ int read;
 		Free(paths);
 		free(pathCommand);
 
-		_printStr(prompt, _strlen(prompt));
+		prompt();
 		read = getline(&line, &len, stdin);
 		if (read < 0)
 			break;

@@ -53,6 +53,8 @@ char *completePath(char *path, char *command);
 char *Path(void);
 /* signal handling of ctr + c */
 void Handler(int num);
+/* test if interactive mode */
+void prompt(void);
 
 /* -------------------------------------- */
 /**
@@ -65,5 +67,6 @@ typedef struct builtin
 	char *env;
 	char *exit;
 } builtin;
+
 
 #endif /* SHELL_H */
