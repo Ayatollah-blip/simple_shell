@@ -1,212 +1,76 @@
-==1844== Memcheck, a memory error detector
-==1844== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
-==1844== Using Valgrind-3.16.1-36d6727e1d-20200622X and LibVEX; rerun with -h for copyright info
-==1844== Command: ./sh
-==1844== Parent PID: 1440
-==1844== 
---1844-- 
---1844-- Valgrind options:
---1844--    -s
---1844--    --leak-check=full
---1844--    --show-leak-kinds=all
---1844--    --track-origins=yes
---1844--    --verbose
---1844--    --log-file=valgrind-sh.text
---1844--    --tool=memcheck
---1844-- Contents of /proc/version:
---1844--   Linux version 6.1.21-v8+ (dom@buildbot) (aarch64-linux-gnu-gcc-8 (Ubuntu/Linaro 8.4.0-3ubuntu1) 8.4.0, GNU ld (GNU Binutils for Ubuntu) 2.34) #1642 SMP PREEMPT Mon Apr  3 17:24:16 BST 2023
---1844-- 
---1844-- Arch and hwcaps: ARM64, LittleEndian, baseline
---1844-- Page sizes: currently 4096, max supported 65536
---1844-- Valgrind library directory: /usr/lib/aarch64-linux-gnu/valgrind
---1844-- Reading syms from /home/pi/Desktop/simple_shell/sh
---1844-- Reading syms from /usr/lib/aarch64-linux-gnu/ld-2.31.so
---1844--   Considering /usr/lib/debug/.build-id/0c/157faa0bf57d35e8fa64ccb41135d5ee593b4e.debug ..
---1844--   .. build-id is valid
---1844-- Reading syms from /usr/lib/aarch64-linux-gnu/valgrind/memcheck-arm64-linux
---1844--   Considering /usr/lib/debug/.build-id/55/2b6c08fce7efb631c7becbfdbaf99ee9bb045e.debug ..
---1844--   .. build-id is valid
---1844--    object doesn't have a dynamic symbol table
---1844-- Scheduler: using generic scheduler lock implementation.
---1844-- Reading suppressions file: /usr/lib/aarch64-linux-gnu/valgrind/default.supp
-==1844== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-1844-by-pi-on-???
-==1844== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-1844-by-pi-on-???
-==1844== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-1844-by-pi-on-???
-==1844== 
-==1844== TO CONTROL THIS PROCESS USING vgdb (which you probably
-==1844== don't want to do, unless you know exactly what you're doing,
-==1844== or are doing some strange experiment):
-==1844==   /usr/bin/vgdb --pid=1844 ...command...
-==1844== 
-==1844== TO DEBUG THIS PROCESS USING GDB: start GDB like this
-==1844==   /path/to/gdb ./sh
-==1844== and then give GDB the following command
-==1844==   target remote | /usr/bin/vgdb --pid=1844
-==1844== --pid is optional if only one valgrind process is running
-==1844== 
---1844-- REDIR: 0x4019a00 (ld-linux-aarch64.so.1:strlen) redirected to 0x580c8258 (vgPlain_arm64_linux_REDIR_FOR_strlen)
---1844-- REDIR: 0x4018a00 (ld-linux-aarch64.so.1:strcmp) redirected to 0x580c82ac (vgPlain_arm64_linux_REDIR_FOR_strcmp)
---1844-- REDIR: 0x4018900 (ld-linux-aarch64.so.1:index) redirected to 0x580c8280 (vgPlain_arm64_linux_REDIR_FOR_index)
---1844-- Reading syms from /usr/lib/aarch64-linux-gnu/valgrind/vgpreload_core-arm64-linux.so
---1844--   Considering /usr/lib/debug/.build-id/86/2ef07f508ed868e9ce3095734b2ce9a19f61ad.debug ..
---1844--   .. build-id is valid
---1844-- Reading syms from /usr/lib/aarch64-linux-gnu/valgrind/vgpreload_memcheck-arm64-linux.so
---1844--   Considering /usr/lib/debug/.build-id/5b/38e3948c6b3565f564e907d1c4867e69b35835.debug ..
---1844--   .. build-id is valid
---1844-- Reading syms from /usr/lib/aarch64-linux-gnu/libc-2.31.so
---1844--   Considering /usr/lib/debug/.build-id/bc/b0be0a4d5929b9244446b6e495b05fd335a306.debug ..
---1844--   .. build-id is valid
---1844-- REDIR: 0x48f6ff0 (libc.so.6:memchr) redirected to 0x48346c8 (_vgnU_ifunc_wrapper)
---1844-- REDIR: 0x48f5dc0 (libc.so.6:strlen) redirected to 0x48346c8 (_vgnU_ifunc_wrapper)
---1844-- REDIR: 0x48f6240 (libc.so.6:rindex) redirected to 0x484cd00 (rindex)
---1844-- REDIR: 0x48f1c70 (libc.so.6:free) redirected to 0x484af70 (free)
---1844-- REDIR: 0x48f16a0 (libc.so.6:malloc) redirected to 0x4849dd8 (malloc)
---1844-- REDIR: 0x48fec40 (libc.so.6:__GI_memchr) redirected to 0x484e528 (__GI_memchr)
---1844-- REDIR: 0x48fd500 (libc.so.6:__GI_memcpy) redirected to 0x484f070 (__GI_memcpy)
---1844-- REDIR: 0x48f6650 (libc.so.6:strspn) redirected to 0x4852430 (strspn)
---1844-- REDIR: 0x48f5810 (libc.so.6:strcspn) redirected to 0x4852350 (strcspn)
-==1844== Invalid read of size 8
-==1844==    at 0x108E7C: Free (free.c:15)
-==1844==    by 0x108FBB: main (main.c:28)
-==1844==  Address 0x49ed6d0 is 0 bytes inside a block of size 72 free'd
-==1844==    at 0x484AFE0: free (vg_replace_malloc.c:538)
-==1844==    by 0x108E8F: Free (free.c:20)
-==1844==    by 0x108FBB: main (main.c:28)
-==1844==  Block was alloc'd at
-==1844==    at 0x4849E4C: malloc (vg_replace_malloc.c:307)
-==1844==    by 0x10976B: token (token.c:32)
-==1844==    by 0x10908B: main (main.c:43)
-==1844== 
-==1844== Invalid read of size 8
-==1844==    at 0x108E58: Free (free.c:17)
-==1844==    by 0x108FBB: main (main.c:28)
-==1844==  Address 0x49ed6d0 is 0 bytes inside a block of size 72 free'd
-==1844==    at 0x484AFE0: free (vg_replace_malloc.c:538)
-==1844==    by 0x108E8F: Free (free.c:20)
-==1844==    by 0x108FBB: main (main.c:28)
-==1844==  Block was alloc'd at
-==1844==    at 0x4849E4C: malloc (vg_replace_malloc.c:307)
-==1844==    by 0x10976B: token (token.c:32)
-==1844==    by 0x10908B: main (main.c:43)
-==1844== 
-==1844== Invalid free() / delete / delete[] / realloc()
-==1844==    at 0x484AFE0: free (vg_replace_malloc.c:538)
-==1844==    by 0x108E5F: Free (free.c:17)
-==1844==    by 0x108FBB: main (main.c:28)
-==1844==  Address 0x49ed760 is 0 bytes inside a block of size 16 free'd
-==1844==    at 0x484AFE0: free (vg_replace_malloc.c:538)
-==1844==    by 0x108E5F: Free (free.c:17)
-==1844==    by 0x108FBB: main (main.c:28)
-==1844==  Block was alloc'd at
-==1844==    at 0x4849E4C: malloc (vg_replace_malloc.c:307)
-==1844==    by 0x1094E7: _strdup (string_functions.c:76)
-==1844==    by 0x10979B: token (token.c:36)
-==1844==    by 0x10908B: main (main.c:43)
-==1844== 
-==1844== Invalid free() / delete / delete[] / realloc()
-==1844==    at 0x484AFE0: free (vg_replace_malloc.c:538)
-==1844==    by 0x108E8F: Free (free.c:20)
-==1844==    by 0x108FBB: main (main.c:28)
-==1844==  Address 0x49ed6d0 is 0 bytes inside a block of size 72 free'd
-==1844==    at 0x484AFE0: free (vg_replace_malloc.c:538)
-==1844==    by 0x108E8F: Free (free.c:20)
-==1844==    by 0x108FBB: main (main.c:28)
-==1844==  Block was alloc'd at
-==1844==    at 0x4849E4C: malloc (vg_replace_malloc.c:307)
-==1844==    by 0x10976B: token (token.c:32)
-==1844==    by 0x10908B: main (main.c:43)
-==1844== 
-==1844== Invalid free() / delete / delete[] / realloc()
-==1844==    at 0x484AFE0: free (vg_replace_malloc.c:538)
-==1844==    by 0x108FC3: main (main.c:29)
-==1844==  Address 0x49edb00 is 0 bytes inside a block of size 12 free'd
-==1844==    at 0x484AFE0: free (vg_replace_malloc.c:538)
-==1844==    by 0x108FC3: main (main.c:29)
-==1844==  Block was alloc'd at
-==1844==    at 0x4849E4C: malloc (vg_replace_malloc.c:307)
-==1844==    by 0x108C63: completePath (CompletePath.c:22)
-==1844==    by 0x10960B: testPath (testPath.c:18)
-==1844==    by 0x1090A3: main (main.c:44)
-==1844== 
-==1844== 
-==1844== HEAP SUMMARY:
-==1844==     in use at exit: 0 bytes in 0 blocks
-==1844==   total heap usage: 26 allocs, 46 frees, 1,687 bytes allocated
-==1844== 
-==1844== All heap blocks were freed -- no leaks are possible
-==1844== 
-==1844== ERROR SUMMARY: 54 errors from 5 contexts (suppressed: 0 from 0)
-==1844== 
-==1844== 2 errors in context 1 of 5:
-==1844== Invalid free() / delete / delete[] / realloc()
-==1844==    at 0x484AFE0: free (vg_replace_malloc.c:538)
-==1844==    by 0x108FC3: main (main.c:29)
-==1844==  Address 0x49edb00 is 0 bytes inside a block of size 12 free'd
-==1844==    at 0x484AFE0: free (vg_replace_malloc.c:538)
-==1844==    by 0x108FC3: main (main.c:29)
-==1844==  Block was alloc'd at
-==1844==    at 0x4849E4C: malloc (vg_replace_malloc.c:307)
-==1844==    by 0x108C63: completePath (CompletePath.c:22)
-==1844==    by 0x10960B: testPath (testPath.c:18)
-==1844==    by 0x1090A3: main (main.c:44)
-==1844== 
-==1844== 
-==1844== 2 errors in context 2 of 5:
-==1844== Invalid free() / delete / delete[] / realloc()
-==1844==    at 0x484AFE0: free (vg_replace_malloc.c:538)
-==1844==    by 0x108E8F: Free (free.c:20)
-==1844==    by 0x108FBB: main (main.c:28)
-==1844==  Address 0x49ed6d0 is 0 bytes inside a block of size 72 free'd
-==1844==    at 0x484AFE0: free (vg_replace_malloc.c:538)
-==1844==    by 0x108E8F: Free (free.c:20)
-==1844==    by 0x108FBB: main (main.c:28)
-==1844==  Block was alloc'd at
-==1844==    at 0x4849E4C: malloc (vg_replace_malloc.c:307)
-==1844==    by 0x10976B: token (token.c:32)
-==1844==    by 0x10908B: main (main.c:43)
-==1844== 
-==1844== 
-==1844== 16 errors in context 3 of 5:
-==1844== Invalid free() / delete / delete[] / realloc()
-==1844==    at 0x484AFE0: free (vg_replace_malloc.c:538)
-==1844==    by 0x108E5F: Free (free.c:17)
-==1844==    by 0x108FBB: main (main.c:28)
-==1844==  Address 0x49ed760 is 0 bytes inside a block of size 16 free'd
-==1844==    at 0x484AFE0: free (vg_replace_malloc.c:538)
-==1844==    by 0x108E5F: Free (free.c:17)
-==1844==    by 0x108FBB: main (main.c:28)
-==1844==  Block was alloc'd at
-==1844==    at 0x4849E4C: malloc (vg_replace_malloc.c:307)
-==1844==    by 0x1094E7: _strdup (string_functions.c:76)
-==1844==    by 0x10979B: token (token.c:36)
-==1844==    by 0x10908B: main (main.c:43)
-==1844== 
-==1844== 
-==1844== 16 errors in context 4 of 5:
-==1844== Invalid read of size 8
-==1844==    at 0x108E58: Free (free.c:17)
-==1844==    by 0x108FBB: main (main.c:28)
-==1844==  Address 0x49ed6d0 is 0 bytes inside a block of size 72 free'd
-==1844==    at 0x484AFE0: free (vg_replace_malloc.c:538)
-==1844==    by 0x108E8F: Free (free.c:20)
-==1844==    by 0x108FBB: main (main.c:28)
-==1844==  Block was alloc'd at
-==1844==    at 0x4849E4C: malloc (vg_replace_malloc.c:307)
-==1844==    by 0x10976B: token (token.c:32)
-==1844==    by 0x10908B: main (main.c:43)
-==1844== 
-==1844== 
-==1844== 18 errors in context 5 of 5:
-==1844== Invalid read of size 8
-==1844==    at 0x108E7C: Free (free.c:15)
-==1844==    by 0x108FBB: main (main.c:28)
-==1844==  Address 0x49ed6d0 is 0 bytes inside a block of size 72 free'd
-==1844==    at 0x484AFE0: free (vg_replace_malloc.c:538)
-==1844==    by 0x108E8F: Free (free.c:20)
-==1844==    by 0x108FBB: main (main.c:28)
-==1844==  Block was alloc'd at
-==1844==    at 0x4849E4C: malloc (vg_replace_malloc.c:307)
-==1844==    by 0x10976B: token (token.c:32)
-==1844==    by 0x10908B: main (main.c:43)
-==1844== 
-==1844== ERROR SUMMARY: 54 errors from 5 contexts (suppressed: 0 from 0)
+==1820== Memcheck, a memory error detector
+==1820== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==1820== Using Valgrind-3.16.1-36d6727e1d-20200622X and LibVEX; rerun with -h for copyright info
+==1820== Command: ./sh
+==1820== Parent PID: 1524
+==1820== 
+--1820-- 
+--1820-- Valgrind options:
+--1820--    -s
+--1820--    --leak-check=full
+--1820--    --show-leak-kinds=all
+--1820--    --track-origins=yes
+--1820--    --verbose
+--1820--    --log-file=valgrind-sh.text
+--1820--    --tool=memcheck
+--1820-- Contents of /proc/version:
+--1820--   Linux version 6.1.21-v8+ (dom@buildbot) (aarch64-linux-gnu-gcc-8 (Ubuntu/Linaro 8.4.0-3ubuntu1) 8.4.0, GNU ld (GNU Binutils for Ubuntu) 2.34) #1642 SMP PREEMPT Mon Apr  3 17:24:16 BST 2023
+--1820-- 
+--1820-- Arch and hwcaps: ARM64, LittleEndian, baseline
+--1820-- Page sizes: currently 4096, max supported 65536
+--1820-- Valgrind library directory: /usr/lib/aarch64-linux-gnu/valgrind
+--1820-- Reading syms from /home/pi/Desktop/simple_shell/sh
+--1820-- Reading syms from /usr/lib/aarch64-linux-gnu/ld-2.31.so
+--1820--   Considering /usr/lib/debug/.build-id/0c/157faa0bf57d35e8fa64ccb41135d5ee593b4e.debug ..
+--1820--   .. build-id is valid
+--1820-- Reading syms from /usr/lib/aarch64-linux-gnu/valgrind/memcheck-arm64-linux
+--1820--   Considering /usr/lib/debug/.build-id/55/2b6c08fce7efb631c7becbfdbaf99ee9bb045e.debug ..
+--1820--   .. build-id is valid
+--1820--    object doesn't have a dynamic symbol table
+--1820-- Scheduler: using generic scheduler lock implementation.
+--1820-- Reading suppressions file: /usr/lib/aarch64-linux-gnu/valgrind/default.supp
+==1820== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-1820-by-pi-on-???
+==1820== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-1820-by-pi-on-???
+==1820== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-1820-by-pi-on-???
+==1820== 
+==1820== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==1820== don't want to do, unless you know exactly what you're doing,
+==1820== or are doing some strange experiment):
+==1820==   /usr/bin/vgdb --pid=1820 ...command...
+==1820== 
+==1820== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==1820==   /path/to/gdb ./sh
+==1820== and then give GDB the following command
+==1820==   target remote | /usr/bin/vgdb --pid=1820
+==1820== --pid is optional if only one valgrind process is running
+==1820== 
+--1820-- REDIR: 0x4019a00 (ld-linux-aarch64.so.1:strlen) redirected to 0x580c8258 (vgPlain_arm64_linux_REDIR_FOR_strlen)
+--1820-- REDIR: 0x4018a00 (ld-linux-aarch64.so.1:strcmp) redirected to 0x580c82ac (vgPlain_arm64_linux_REDIR_FOR_strcmp)
+--1820-- REDIR: 0x4018900 (ld-linux-aarch64.so.1:index) redirected to 0x580c8280 (vgPlain_arm64_linux_REDIR_FOR_index)
+--1820-- Reading syms from /usr/lib/aarch64-linux-gnu/valgrind/vgpreload_core-arm64-linux.so
+--1820--   Considering /usr/lib/debug/.build-id/86/2ef07f508ed868e9ce3095734b2ce9a19f61ad.debug ..
+--1820--   .. build-id is valid
+--1820-- Reading syms from /usr/lib/aarch64-linux-gnu/valgrind/vgpreload_memcheck-arm64-linux.so
+--1820--   Considering /usr/lib/debug/.build-id/5b/38e3948c6b3565f564e907d1c4867e69b35835.debug ..
+--1820--   .. build-id is valid
+--1820-- Reading syms from /usr/lib/aarch64-linux-gnu/libc-2.31.so
+--1820--   Considering /usr/lib/debug/.build-id/bc/b0be0a4d5929b9244446b6e495b05fd335a306.debug ..
+--1820--   .. build-id is valid
+--1820-- REDIR: 0x48f6ff0 (libc.so.6:memchr) redirected to 0x48346c8 (_vgnU_ifunc_wrapper)
+--1820-- REDIR: 0x48f5dc0 (libc.so.6:strlen) redirected to 0x48346c8 (_vgnU_ifunc_wrapper)
+--1820-- REDIR: 0x48f6240 (libc.so.6:rindex) redirected to 0x484cd00 (rindex)
+--1820-- REDIR: 0x48f16a0 (libc.so.6:malloc) redirected to 0x4849dd8 (malloc)
+--1820-- REDIR: 0x48fec40 (libc.so.6:__GI_memchr) redirected to 0x484e528 (__GI_memchr)
+--1820-- REDIR: 0x48fd500 (libc.so.6:__GI_memcpy) redirected to 0x484f070 (__GI_memcpy)
+--1820-- REDIR: 0x48f6650 (libc.so.6:strspn) redirected to 0x4852430 (strspn)
+--1820-- REDIR: 0x48f5810 (libc.so.6:strcspn) redirected to 0x4852350 (strcspn)
+--1820-- REDIR: 0x48f1c70 (libc.so.6:free) redirected to 0x484af70 (free)
+--1820-- REDIR: 0x48f1ec0 (libc.so.6:realloc) redirected to 0x484c2e8 (realloc)
+==1820== 
+==1820== HEAP SUMMARY:
+==1820==     in use at exit: 0 bytes in 0 blocks
+==1820==   total heap usage: 28 allocs, 28 frees, 2,968 bytes allocated
+==1820== 
+==1820== All heap blocks were freed -- no leaks are possible
+==1820== 
+==1820== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)

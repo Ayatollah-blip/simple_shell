@@ -9,7 +9,7 @@ void Free(char **buf)
 {
 	int i = 0;
 
-	if (buf == NULL)
+	if (!buf || buf == NULL)
 		return;
 
 	while (buf[i])
