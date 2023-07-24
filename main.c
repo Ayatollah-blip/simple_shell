@@ -25,8 +25,6 @@ int read;
 	while (1)
 	{
 		Free(Tok);
-/*		Free(paths);
-		free(pathCommand);*/
 		prompt();
 		read = getline(&line, &len, stdin);
 		if (read < 0)
@@ -45,7 +43,6 @@ int read;
 			perror(argv[0]);
 		else
 			execute(pathCommand, Tok);
-	
 		Free(paths);
 		free(pathCommand);
 
