@@ -27,12 +27,18 @@ int read;
 		Free(Tok);
 		prompt();
 		read = getline(&line, &len, stdin);
+		if (feof(stdin))
+		{
+			_printStr("\n",1);
+			free(line);
+			exit(0);
+		}
 		if (read < 0)
 			break;
 		if (line[_strlen(line) - 1] == '\n')
 			line[_strlen(line) - 1] = '\0';
 		Tok = token(line);
-		if (Tok == NULL || *Tok == NULL || **Tok == '\0')
+		if (Tok == NULL ||*Tok == NULL || **Tok == '\0')
 			continue;
 		if (ApplyExecute(Tok, line))
 			continue;

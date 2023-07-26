@@ -12,6 +12,7 @@ void execute(char *cp, char **cmd)
 	int status;
 	char **env = environ;
 
+
 	child_pid = fork();
 	if (child_pid < 0)
 		perror(cp);
