@@ -47,6 +47,7 @@ int read;
 		free(pathCommand);
 
 	}
+	_printStr("\n", 1);
 	free(line);
 	return (0);
 }
