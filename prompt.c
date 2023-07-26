@@ -8,10 +8,7 @@
 */
 void prompt(void)
 {
-bool interactive = 0;
 
 	if ((isatty(STDIN_FILENO) == 1) && (isatty(STDOUT_FILENO) == 1))
-		interactive = 1;
-	if (interactive)
 		_printStr("$ ", 2);
 }
