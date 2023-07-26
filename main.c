@@ -29,7 +29,6 @@ int read;
 		read = getline(&line, &len, stdin);
 		if (feof(stdin))
 		{
-			_printStr("\n",1);
 			free(line);
 			exit(0);
 		}
